@@ -1,7 +1,11 @@
 image: Visual Studio 2019
 
 build_script:
-  - dotnet publish --configuration Release --framework netcoreapp3.0 --output ./linux --self-contained true --runtime linux-x86
+  - dotnet publish --configuration Release --framework netcoreapp3.0 --output ./linux64 --self-contained true --runtime linux-x64
+  - dotnet publish --configuration Release --framework netcoreapp3.0 --output ./win64 --self-contained true --runtime windows-x64
+  - dotnet publish --configuration Release --framework netcoreapp3.0 --output ./win32 --self-contained true --runtime windows-x32
   
 artifacts:
-  - path: ./linux
+  - path: ./linux64
+  - path: ./win32
+  - path: ./win64
