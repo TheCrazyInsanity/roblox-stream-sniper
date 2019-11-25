@@ -18,7 +18,7 @@ jobs:
     - uses: juankaram/archive-action@v1.0.0
       name: Create tar archive
       with:
-        args: tar -cfvf ./build.tar.gz ./bin/Release/netcoreapp3.0/
+        args: tar -czvf build.tar.gz ./bin/Release/netcoreapp3.0/
     - name: Release build artifacts
       uses: "marvinpinto/action-automatic-releases@latest"
       with:
