@@ -13,5 +13,7 @@ artifacts:
 deploy:
   - provider: GitHub
     artifact: win32.zip, win64.zip, linux64.zip
+    auth_token:
+      secure: HO3daLYp+d6sCOj/BLyHs94JRgjo7cOpXgsWXMbFewxt76IQfs1zkYhBslgO9aCH
     draft: false
     prerelease: false
