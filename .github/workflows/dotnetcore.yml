@@ -28,5 +28,5 @@ jobs:
         prerelease: false
         title: "Auto Build"
         files: |
-          ./build.tar.gz
+          build.tar.gz
     
