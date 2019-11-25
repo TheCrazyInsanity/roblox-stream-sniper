@@ -1,18 +1,23 @@
 image: Visual Studio 2019
 
 build_script:
-  - dotnet publish --configuration Release --framework netcoreapp3.0 --output ./linux64 --self-contained true --runtime linux-x64
-  - dotnet publish --configuration Release --framework netcoreapp3.0 --output ./win64 --self-contained true --runtime win-x64
-  - dotnet publish --configuration Release --framework netcoreapp3.0 --output ./win32 --self-contained true --runtime win-x86
-  
+  - dotnet publish --configuration Release --framework netcoreapp3.0 --output ./linux64-self --self-contained true --runtime linux-x64
+  - dotnet publish --configuration Release --framework netcoreapp3.0 --output ./win64-self --self-contained true --runtime win-x64
+  - dotnet publish --configuration Release --framework netcoreapp3.0 --output ./win32-self --self-contained true --runtime win-x86
+  - dotnet publish --configuration Release --framework netcoreapp3.0 --output ./linux64 --self-contained false --runtime linux-x64
+  - dotnet publish --configuration Release --framework netcoreapp3.0 --output ./win64 --self-contained false --runtime win-x64
+  - dotnet publish --configuration Release --framework netcoreapp3.0 --output ./win32 --self-contained false --runtime win-x86
 artifacts:
   - path: ./linux64
   - path: ./win32
   - path: ./win64
+  - path: ./linux64-self
+  - path: ./win32-self
+  - path: ./win64-self
 
 deploy:
   - provider: GitHub
-    artifact: win32.zip, win64.zip, linux64.zip
+    artifact: win32.zip, win64.zip, linux64.zip, win32-self.zip, win64-self.zip, linux64-self.zip
     auth_token:
       secure: HO3daLYp+d6sCOj/BLyHs94JRgjo7cOpXgsWXMbFewxt76IQfs1zkYhBslgO9aCH
     draft: false
