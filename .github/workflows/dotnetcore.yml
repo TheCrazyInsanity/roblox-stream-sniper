@@ -15,10 +15,9 @@ jobs:
       uses: actions/setup-dotnet@v1
     - name: Build with dotnet
       run: dotnet build --configuration Release
-    - name: Archive using zip or tar
-      uses: juankaram/archive-action@v1.0.0
+    - uses: montudor/action-zip@v0.1.0
       with:
-        args: "zip -r build.zip ./bin/Release/netcoreapp3.0"
+        args: zip -qq -r ./build.zip ./bin/Release/netcoreapp3.0
     - name: Release build artifacts
       uses: "marvinpinto/action-automatic-releases@latest"
       with:
