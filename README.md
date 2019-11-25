@@ -2,7 +2,7 @@
 Join players in game.
 
 # How does it work?
-Roblox has api which shows all running servers of a place. It returns players avatar headshot urls. So we can fetch targets headshot url using another api and compare them. If we find a match we know which server to join and the running servers api also gives us join script. To join we can open browser console on roblox website by pressing `CTRL+SHIFT+I` and selecting Console tab and paste script there.
+Roblox has api which shows all running servers of a place. It returns players avatar headshot urls and server join script. So we can fetch targets headshot url using another api and compare them. If we find a match we know which server to join using script api gives us. To join game we can open browser console on roblox website by pressing `CTRL+SHIFT+I` and selecting Console tab and paste script there.
 
 # Requierements
  - .NET Core 3 runtime
