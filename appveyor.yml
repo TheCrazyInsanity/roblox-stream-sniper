@@ -1,8 +1,7 @@
-image: Visual Studio 2019 Preview
+image: Visual Studio 2019
 
 build_script:
-  - dotnet publish --configuration Release
-
+  - dotnet publish --configuration Release --framework netcoreapp3.0 --output ./linux --self-contained true --runtime linux-x32
+  
 artifacts:
-  # pushing entire folder as a zip archive
-  - path: ./bin/Release/netcoreapp3.0/publish
+  - path: ./linux
