@@ -12,9 +12,6 @@ artifacts:
 
 deploy:
   - provider: GitHub
-    artifact:
-      - win32.zip
-      - win64.zip
-      - linux64.zip
+    artifact: win32.zip, win64.zip, linux64.zip
     draft: false
     prerelease: false
