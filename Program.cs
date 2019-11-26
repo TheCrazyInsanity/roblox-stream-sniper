@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Net;
-using System.Text;
 using CommandLine;
 using Newtonsoft.Json;
 using kk33.RbxStreamSniper.Json;
-using System.Linq;
-using System.Threading;
 
 namespace kk33.RbxStreamSniper
 {
@@ -15,23 +9,21 @@ namespace kk33.RbxStreamSniper
     {
         class Options
         {
-            [Option('c', "cookie", Required = false, HelpText = "Specify your .ROBLOSECURITY cookie.")]
+            [Option('c', "cookie", Required = false, HelpText = "Set your .ROBLOSECURITY cookie.")]
             public string Cookie { get; set; }
 
-            [Option('i', "userid", Required = false, HelpText = "Target user ID.")]
+            [Option('u', "user", Required = false, HelpText = "Set target user ID.")]
             public string UserId { get; set; }
 
-            [Option('n', "username", Required = false, HelpText = "Target user name.")]
+            [Option('n', "username", Required = false, HelpText = "Set target user name.")]
             public string UserName { get; set; }
 
-            [Option('p', "placeid", Required = false, HelpText = "Target game ID.")]
+            [Option('p', "place", Required = false, HelpText = "Set place ID target is in.")]
             public string PlaceId { get; set; }
 
-            [Option('s', "game", Required = false, HelpText = "Search for game by name and use first result.")]
+            [Option('s', "search", Required = false, HelpText = "Search for game by name and use start place of first result.")]
             public string GameName { get; set; }
         }
-
-        
 
         static void Main(string[] args)
         {
@@ -44,7 +36,6 @@ namespace kk33.RbxStreamSniper
                 string ownid = null;
                 int totalPages = 0;
 
-
                 Console.WriteLine();
                 if (o.Cookie != null)
                 {
@@ -52,18 +43,11 @@ namespace kk33.RbxStreamSniper
                 }
                 else
                 {
-                    if (Environment.GetEnvironmentVariable("rbxcookie") != null)
-                    {
-                        cookie = ".ROBLOSECURITY=" + Environment.GetEnvironmentVariable("rbxcookie").Trim();
-                    }
-                    else
-                    {
-                        Console.WriteLine("No .ROBLOSECURITY cookie specified. You may also use \"rbxcookie\" environment variable.");
-                        Environment.Exit(1);
-                    }
+                    Console.WriteLine("No .ROBLOSECURITY cookie specified. You may also use \"rbxcookie\" environment variable.");
+                    Environment.Exit(1);
                 }
 
-                Console.Write("Getting your ID to test cookie... ");
+                Console.Write("Getting your ID to check if cookie is valid... ");
                 try
                 {
                     ownid = Roblox.GetOwnId(cookie);
@@ -89,6 +73,7 @@ namespace kk33.RbxStreamSniper
                     else
                     {
                         Console.WriteLine("No user specified.");
+                        Console.WriteLine();
                         Environment.Exit(1);
                     }
                 }
@@ -121,12 +106,13 @@ namespace kk33.RbxStreamSniper
                     else
                     {
                         Console.WriteLine("No game specified.");
+                        Console.WriteLine();
                         Environment.Exit(1);
                     }
                 }
                 Console.WriteLine(placeid);
 
-                Console.Write("Getting total server count... ");
+                Console.Write("Getting total pages... ");
                 try
                 {
                     totalPages = (int)Math.Ceiling((decimal)Roblox.GetPlaceInstances(placeid, 0, cookie).TotalCollectionSize / 10);
@@ -140,8 +126,8 @@ namespace kk33.RbxStreamSniper
                     try
                     {
                         PlaceInstances placeInstances = Roblox.GetPlaceInstances(placeid, page, cookie);
-                        foreach (var (server, iserver) in placeInstances.Collection.WithIndex())
-                            foreach (var (player, iplayer) in server.CurrentPlayers.WithIndex())
+                        foreach (var server in placeInstances.Collection)
+                            foreach (var player in server.CurrentPlayers)
                                 if (player.Thumbnail.Url == avatar)
                                 {
                                     Console.WriteLine();
@@ -150,13 +136,10 @@ namespace kk33.RbxStreamSniper
                                     Console.WriteLine();
                                     Environment.Exit(0);
                                 }
-                                else
-                                {
-                                    string text = $" {page + 1}/{totalPages}  [";
-                                    int textLen = text.CountCharacters();
-                                    Console.SetCursorPosition(0, Console.CursorTop);
-                                    Console.Write(text + ProgressBar.Generate(page * 100 / 500, Console.WindowWidth - textLen - 2) + "] ");
-                                }
+                        string text = $" {page + 1}/{totalPages}  [";
+                        int textLen = CountCharacters(text);
+                        Console.SetCursorPosition(0, Console.CursorTop);
+                        Console.Write($"{text}{ProgressBar.Generate(page * 100 / 500, Console.WindowWidth - textLen - 2)}] ");
                     }
                     catch (Exception e) { CatchException(e); }
                 }
@@ -167,22 +150,19 @@ namespace kk33.RbxStreamSniper
             });
         }
 
-        public static void CatchException(Exception e)
-        {
-            Console.WriteLine("\r\n===========\r\nException: " + e.ToString() + " | " + e.InnerException?.ToString());
-            Environment.Exit(2);
-        }
-    }
-
-    public static class Extensions
-    {
-        public static int CountCharacters(this string source)
+        public static int CountCharacters(string source)
         {
             int count = 0;
             foreach (char c in source)
                 count++;
             return count;
         }
-        public static IEnumerable<(T item, int index)> WithIndex<T>(this IEnumerable<T> self) => self?.Select((item, index) => (item, index)) ?? new List<(T, int)>();
+
+        public static void CatchException(Exception e)
+        {
+            Console.WriteLine("\r\n===========\r\nException: " + e.ToString() + " | " + e.InnerException?.ToString());
+            Console.WriteLine();
+            Environment.Exit(2);
+        }
     }
 }
