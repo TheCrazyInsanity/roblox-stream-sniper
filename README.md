@@ -9,15 +9,15 @@ Roblox has api which shows all running servers of a place. It returns players av
 
 # Usage
 
-  -c, --cookie      Specify your .ROBLOSECURITY cookie.
+  -c, --cookie      Set your .ROBLOSECURITY cookie.
 
-  -i, --userid      Target user ID.
+  -u, --user        Set target user ID.
 
-  -n, --username    Target user name.
+  -n, --username    Set target user name.
 
-  -p, --placeid     Target game ID.
+  -p, --place       Set place ID target is in.
 
-  -s, --game        Search for game by name and use first result.
+  -s, --search      Search for game by name and use start place of first result.
   
 # Building
  - Install .NET Core 3 SDK
