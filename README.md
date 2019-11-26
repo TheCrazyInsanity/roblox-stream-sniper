@@ -1,3 +1,4 @@
+[![HitCount](http://hits.dwyl.io/33kk/roblox-stream-sniper.svg)](http://hits.dwyl.io/33kk/roblox-stream-sniper) [![Build status](https://ci.appveyor.com/api/projects/status/6xw088wua7shg8fv?svg=true)](https://ci.appveyor.com/project/33kk/roblox-stream-sniper)
 # Roblox Stream Sniper
 Join players in game.
 
