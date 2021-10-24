@@ -47,7 +47,7 @@ namespace kk33.RbxStreamSniper
                     Environment.Exit(1);
                 }
 
-                Console.Write("Getting your ID to check if cookie is valid... ");
+                //Console.Write("Getting your ID to check if cookie is valid... ");
                 try
                 {
                     //ownid = Roblox.GetOwnId(cookie);
@@ -87,7 +87,7 @@ namespace kk33.RbxStreamSniper
                 catch (Exception e) { CatchException(e); }
                 //Console.WriteLine(avatar);
 
-                Console.Write("Getting place ID... ");
+                //Console.Write("Getting place ID... ");
                 if (o.PlaceId != null)
                 {
                     placeid = o.PlaceId;
@@ -112,7 +112,7 @@ namespace kk33.RbxStreamSniper
                 }
                 //Console.WriteLine(placeid);
 
-                Console.Write("Getting total pages... ");
+                //Console.Write("Getting total pages... ");
                 try
                 {
                     totalPages = (int)Math.Ceiling((decimal)Roblox.GetPlaceInstances(placeid, 0, cookie).TotalCollectionSize / 10);
@@ -132,7 +132,7 @@ namespace kk33.RbxStreamSniper
                                 {
                                     //Console.WriteLine();
                                     //Console.WriteLine();
-                                    Console.WriteLine(server);
+                                    Console.WriteLine(server.JoinScript);
                                     //Console.WriteLine();
                                     Environment.Exit(0);
                                 }
