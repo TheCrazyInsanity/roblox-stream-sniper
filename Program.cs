@@ -138,7 +138,7 @@ namespace kk33.RbxStreamSniper
                                 }
                         string text = $" {page + 1}/{totalPages}  [";
                         int textLen = CountCharacters(text);
-                        Console.SetCursorPosition(0, Console.CursorTop);
+                        //Console.SetCursorPosition(0, Console.CursorTop);
                         //Console.Write($"{text}{ProgressBar.Generate(page * 100 / 500, Console.WindowWidth - textLen - 2)}] ");
                     }
                     catch (Exception e) { CatchException(e); }
