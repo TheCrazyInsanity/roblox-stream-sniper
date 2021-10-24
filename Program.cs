@@ -50,10 +50,10 @@ namespace kk33.RbxStreamSniper
                 Console.Write("Getting your ID to check if cookie is valid... ");
                 try
                 {
-                    ownid = Roblox.GetOwnId(cookie);
+                    //ownid = Roblox.GetOwnId(cookie);
                 }
                 catch (Exception e) { CatchException(e); }
-                Console.WriteLine(ownid);
+                //Console.WriteLine(ownid);
 
                 Console.Write("Getting target user ID... ");
                 if (o.UserId != null)
