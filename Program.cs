@@ -132,7 +132,7 @@ namespace kk33.RbxStreamSniper
                                 {
                                     //Console.WriteLine();
                                     //Console.WriteLine();
-                                    Console.WriteLine(server.JoinScript);
+                                    Console.WriteLine(server.gameInstanceId);
                                     //Console.WriteLine();
                                     Environment.Exit(0);
                                 }
