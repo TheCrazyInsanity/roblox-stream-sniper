@@ -36,14 +36,14 @@ namespace kk33.RbxStreamSniper
                 string ownid = null;
                 int totalPages = 0;
 
-                Console.WriteLine();
+                //Console.WriteLine();
                 if (o.Cookie != null)
                 {
                     cookie = ".ROBLOSECURITY=" + o.Cookie.Trim();
                 }
                 else
                 {
-                    Console.WriteLine("No .ROBLOSECURITY cookie specified. You may also use \"rbxcookie\" environment variable.");
+                    //Console.WriteLine("No .ROBLOSECURITY cookie specified. You may also use \"rbxcookie\" environment variable.");
                     Environment.Exit(1);
                 }
 
@@ -55,7 +55,7 @@ namespace kk33.RbxStreamSniper
                 catch (Exception e) { CatchException(e); }
                 //Console.WriteLine(ownid);
 
-                Console.Write("Getting target user ID... ");
+                //Console.Write("Getting target user ID... ");
                 if (o.UserId != null)
                 {
                     userid = o.UserId;
@@ -73,19 +73,19 @@ namespace kk33.RbxStreamSniper
                     else
                     {
                         Console.WriteLine("No user specified.");
-                        Console.WriteLine();
+                        //Console.WriteLine();
                         Environment.Exit(1);
                     }
                 }
-                Console.WriteLine(userid);
+                //Console.WriteLine(userid);
 
-                Console.Write("Getting target user avatar url... ");
+                //Console.Write("Getting target user avatar url... ");
                 try
                 {
                     avatar = Roblox.GetAvatarHeadshotUrl(userid);
                 }
                 catch (Exception e) { CatchException(e); }
-                Console.WriteLine(avatar);
+                //Console.WriteLine(avatar);
 
                 Console.Write("Getting place ID... ");
                 if (o.PlaceId != null)
@@ -106,11 +106,11 @@ namespace kk33.RbxStreamSniper
                     else
                     {
                         Console.WriteLine("No game specified.");
-                        Console.WriteLine();
+                        //Console.WriteLine();
                         Environment.Exit(1);
                     }
                 }
-                Console.WriteLine(placeid);
+                //Console.WriteLine(placeid);
 
                 Console.Write("Getting total pages... ");
                 try
@@ -118,9 +118,9 @@ namespace kk33.RbxStreamSniper
                     totalPages = (int)Math.Ceiling((decimal)Roblox.GetPlaceInstances(placeid, 0, cookie).TotalCollectionSize / 10);
                 }
                 catch (Exception e) { CatchException(e); }
-                Console.WriteLine(totalPages);
+                //Console.WriteLine(totalPages);
 
-                Console.WriteLine();
+                //Console.WriteLine();
                 for (int page = 0; page <= totalPages; page++)
                 {
                     try
@@ -130,23 +130,23 @@ namespace kk33.RbxStreamSniper
                             foreach (var player in server.CurrentPlayers)
                                 if (player.Thumbnail.Url == avatar)
                                 {
-                                    Console.WriteLine();
-                                    Console.WriteLine();
-                                    Console.WriteLine(" Result: " + server.JoinScript);
-                                    Console.WriteLine();
+                                    //Console.WriteLine();
+                                    //Console.WriteLine();
+                                    Console.WriteLine(server.JoinScript);
+                                    //Console.WriteLine();
                                     Environment.Exit(0);
                                 }
                         string text = $" {page + 1}/{totalPages}  [";
                         int textLen = CountCharacters(text);
                         Console.SetCursorPosition(0, Console.CursorTop);
-                        Console.Write($"{text}{ProgressBar.Generate(page * 100 / 500, Console.WindowWidth - textLen - 2)}] ");
+                        //Console.Write($"{text}{ProgressBar.Generate(page * 100 / 500, Console.WindowWidth - textLen - 2)}] ");
                     }
                     catch (Exception e) { CatchException(e); }
                 }
-                Console.WriteLine();
-                Console.WriteLine();
+                //Console.WriteLine();
+                //Console.WriteLine();
                 Console.WriteLine("Cant find player...");
-                Console.WriteLine();
+                //Console.WriteLine();
             });
         }
 
@@ -161,7 +161,8 @@ namespace kk33.RbxStreamSniper
         public static void CatchException(Exception e)
         {
             Console.WriteLine("\r\n===========\r\nException: " + e.ToString() + " | " + e.InnerException?.ToString());
-            Console.WriteLine();
+            //Above should still be printed, will fuck up the node part unless i find a good way to pass it through, but it will be pretty obvious SOMETHING is wrong if it fucks up the node part.
+            //Console.WriteLine();
             Environment.Exit(2);
         }
     }
