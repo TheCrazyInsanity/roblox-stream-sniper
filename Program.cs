@@ -160,8 +160,11 @@ namespace kk33.RbxStreamSniper
 
         public static void CatchException(Exception e)
         {
-            Console.WriteLine("\r\n===========\r\nException: " + e.ToString() + " | " + e.InnerException?.ToString());
-            //Above should still be printed, will fuck up the node part unless i find a good way to pass it through, but it will be pretty obvious SOMETHING is wrong if it fucks up the node part.
+            //
+            Console.WriteLine("Unknown Error")
+            //Replaced old verbose error with this, easier to work with
+            //Console.WriteLine("\r\n===========\r\nException: " + e.ToString() + " | " + e.InnerException?.ToString());
+            //*Outdated comment ignore* Above should still be printed, will fuck up the node part unless i find a good way to pass it through, but it will be pretty obvious SOMETHING is wrong if it fucks up the node part.
             //Console.WriteLine();
             Environment.Exit(2);
         }
