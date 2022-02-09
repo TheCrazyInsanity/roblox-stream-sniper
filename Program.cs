@@ -162,7 +162,7 @@ namespace kk33.RbxStreamSniper
         {
             Console.WriteLine("Unknown Error");
             //Added to make it easier to deal with inside of node 
-            //Console.WriteLine("\r\n===========\r\nException: " + e.ToString() + " | " + e.InnerException?.ToString());
+            Console.WriteLine("\r\n===========\r\nException: " + e.ToString() + " | " + e.InnerException?.ToString());
             //*Outdated* Above should still be printed, will fuck up the node part unless i find a good way to pass it through, but it will be pretty obvious SOMETHING is wrong if it fucks up the node part.
             //Console.WriteLine();
             Environment.Exit(2);
