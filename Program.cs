@@ -13,7 +13,7 @@ namespace kk33.RbxStreamSniper
             public string Cookie { get; set; }
 
             [Option('u', "user", Required = false, HelpText = "Set target user ID.")]
-            public string UserId { get; set; }
+            public long UserId { get; set; }
 
             [Option('n', "username", Required = false, HelpText = "Set target user name.")]
             public string UserName { get; set; }
