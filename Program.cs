@@ -31,7 +31,7 @@ namespace kk33.RbxStreamSniper
             {
                 string cookie = null;
                 string placeid = null;
-                long userid = null;
+                //long userid = null;
                 string avatar = null;
                 string ownid = null;
                 int totalPages = 0;
@@ -66,7 +66,7 @@ namespace kk33.RbxStreamSniper
                     {
                         try
                         {
-                            userid = JsonConvert.DeserializeObject<GetByUsername>(HttpHelpers.Get($"https://api.roblox.com/users/get-by-username?username={o.UserName.Trim()}")).Id.ToString();
+                           long userid = JsonConvert.DeserializeObject<GetByUsername>(HttpHelpers.Get($"https://api.roblox.com/users/get-by-username?username={o.UserName.Trim()}")).Id.ToString();
                         }
                         catch (Exception e) { CatchException(e); }
                     }
