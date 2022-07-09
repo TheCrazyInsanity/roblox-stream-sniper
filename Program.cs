@@ -66,7 +66,7 @@ namespace kk33.RbxStreamSniper
                     {
                         try
                         {
-                           long userid = JsonConvert.DeserializeObject<GetByUsername>(HttpHelpers.Get($"https://api.roblox.com/users/get-by-username?username={o.UserName.Trim()}")).Id.ToString();
+                           long userid = (long) JsonConvert.DeserializeObject<GetByUsername>(HttpHelpers.Get($"https://api.roblox.com/users/get-by-username?username={o.UserName.Trim()}")).Id.ToString();
                         }
                         catch (Exception e) { CatchException(e); }
                     }
