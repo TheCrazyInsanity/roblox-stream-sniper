@@ -31,7 +31,7 @@ namespace kk33.RbxStreamSniper
             {
                 string cookie = null;
                 string placeid = null;
-                string userid = null;
+                long userid = null;
                 string avatar = null;
                 string ownid = null;
                 int totalPages = 0;
