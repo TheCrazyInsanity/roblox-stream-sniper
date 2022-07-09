@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using CommandLine;
 using Newtonsoft.Json;
 using kk33.RbxStreamSniper.Json;
@@ -13,7 +13,7 @@ namespace kk33.RbxStreamSniper
             public string Cookie { get; set; }
 
             [Option('u', "user", Required = false, HelpText = "Set target user ID.")]
-            public ulong UserId { get; set; }
+            public string UserId { get; set; }
 
             [Option('n', "username", Required = false, HelpText = "Set target user name.")]
             public string UserName { get; set; }
@@ -31,7 +31,7 @@ namespace kk33.RbxStreamSniper
             {
                 string cookie = null;
                 string placeid = null;
-                ulong userid = 1;
+                string userid = null;
                 string avatar = null;
                 string ownid = null;
                 int totalPages = 0;
@@ -66,7 +66,7 @@ namespace kk33.RbxStreamSniper
                     {
                         try
                         {
-                            userid = JsonConvert.DeserializeObject<GetByUsername>(HttpHelpers.Get($"https://api.roblox.com/users/get-by-username?username={o.UserName.Trim()}")).Id;
+                            userid = JsonConvert.DeserializeObject<GetByUsername>(HttpHelpers.Get($"https://api.roblox.com/users/get-by-username?username={o.UserName.Trim()}")).Id.ToString();
                         }
                         catch (Exception e) { CatchException(e); }
                     }
