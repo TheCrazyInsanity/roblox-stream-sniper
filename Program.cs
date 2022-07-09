@@ -1,4 +1,4 @@
-using System;
+sing System;
 using CommandLine;
 using Newtonsoft.Json;
 using kk33.RbxStreamSniper.Json;
@@ -10,31 +10,31 @@ namespace kk33.RbxStreamSniper
         class Options
         {
             [Option('c', "cookie", Required = false, HelpText = "Set your .ROBLOSECURITY cookie.")]
-            public Cookie { get; set; }
+            public string Cookie { get; set; }
 
             [Option('u', "user", Required = false, HelpText = "Set target user ID.")]
-            public UserId { get; set; }
+            public string UserId { get; set; }
 
             [Option('n', "username", Required = false, HelpText = "Set target user name.")]
-            public UserName { get; set; }
+            public string UserName { get; set; }
 
             [Option('p', "place", Required = false, HelpText = "Set place ID target is in.")]
-            public PlaceId { get; set; }
+            public string PlaceId { get; set; }
 
             [Option('s', "search", Required = false, HelpText = "Search for game by name and use start place of first result.")]
-            public GameName { get; set; }
+            public string GameName { get; set; }
         }
 
         static void Main(string[] args)
         {
             Parser.Default.ParseArguments<Options>(args).WithParsed<Options>(o =>
             {
-                 cookie = null;
-                 placeid = null;
-                 userid = null;
-                 avatar = null;
-                 ownid = null;
-                 totalPages = 0;
+                string cookie = null;
+                string placeid = null;
+                string userid = null;
+                string avatar = null;
+                string ownid = null;
+                int totalPages = 0;
 
                 //Console.WriteLine();
                 if (o.Cookie != null)
