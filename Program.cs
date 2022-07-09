@@ -13,7 +13,7 @@ namespace kk33.RbxStreamSniper
             public string Cookie { get; set; }
 
             [Option('u', "user", Required = false, HelpText = "Set target user ID.")]
-            public string UserId { get; set; }
+            public long UserId { get; set; }
 
             [Option('n', "username", Required = false, HelpText = "Set target user name.")]
             public string UserName { get; set; }
@@ -58,7 +58,7 @@ namespace kk33.RbxStreamSniper
                 //Console.Write("Getting target user ID... ");
                 if (o.UserId != null)
                 {
-                userid = (int) o.UserId;
+                userid = o.UserId;
                 }
                 else
                 {
