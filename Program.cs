@@ -66,7 +66,7 @@ namespace kk33.RbxStreamSniper
                     {
                         try
                         {
-                            userid = JsonConvert.DeserializeObject<GetByUsername>(HttpHelpers.Get($"https://api.roblox.com/users/get-by-username?username={o.UserName.Trim()}")).Id;
+                            public ulong userid = JsonConvert.DeserializeObject<GetByUsername>(HttpHelpers.Get($"https://api.roblox.com/users/get-by-username?username={o.UserName.Trim()}")).Id;
                         }
                         catch (Exception e) { CatchException(e); }
                     }
@@ -82,7 +82,7 @@ namespace kk33.RbxStreamSniper
                 //Console.Write("Getting target user avatar url... ");
                 try
                 {
-                    avatar = Roblox.GetAvatarHeadshotUrl(userid);
+                    avatar = Roblox.GetAvatarHeadshotUrl(public ulong userid);
                 }
                 catch (Exception e) { CatchException(e); }
                 //Console.WriteLine(avatar);
