@@ -10,31 +10,31 @@ namespace kk33.RbxStreamSniper
         class Options
         {
             [Option('c', "cookie", Required = false, HelpText = "Set your .ROBLOSECURITY cookie.")]
-            public string Cookie { get; set; }
+            public Cookie { get; set; }
 
             [Option('u', "user", Required = false, HelpText = "Set target user ID.")]
-            public string UserId { get; set; }
+            public UserId { get; set; }
 
             [Option('n', "username", Required = false, HelpText = "Set target user name.")]
-            public string UserName { get; set; }
+            public UserName { get; set; }
 
             [Option('p', "place", Required = false, HelpText = "Set place ID target is in.")]
-            public string PlaceId { get; set; }
+            public PlaceId { get; set; }
 
             [Option('s', "search", Required = false, HelpText = "Search for game by name and use start place of first result.")]
-            public string GameName { get; set; }
+            public GameName { get; set; }
         }
 
         static void Main(string[] args)
         {
             Parser.Default.ParseArguments<Options>(args).WithParsed<Options>(o =>
             {
-                string cookie = null;
-                string placeid = null;
-                long userid = null;
-                string avatar = null;
-                string ownid = null;
-                int totalPages = 0;
+                 cookie = null;
+                 placeid = null;
+                 userid = null;
+                 avatar = null;
+                 ownid = null;
+                 totalPages = 0;
 
                 //Console.WriteLine();
                 if (o.Cookie != null)
