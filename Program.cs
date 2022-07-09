@@ -66,7 +66,7 @@ namespace kk33.RbxStreamSniper
                     {
                         try
                         {
-                            public ulong userid = JsonConvert.DeserializeObject<GetByUsername>(HttpHelpers.Get($"https://api.roblox.com/users/get-by-username?username={o.UserName.Trim()}")).Id;
+                            userid = JsonConvert.DeserializeObject<GetByUsername>(HttpHelpers.Get($"https://api.roblox.com/users/get-by-username?username={o.UserName.Trim()}")).Id;
                         }
                         catch (Exception e) { CatchException(e); }
                     }
