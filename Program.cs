@@ -82,7 +82,7 @@ namespace kk33.RbxStreamSniper
                 //Console.Write("Getting target user avatar url... ");
                 try
                 {
-                    avatar = Roblox.GetAvatarHeadshotUrl(public ulong userid);
+                    avatar = Roblox.GetAvatarHeadshotUrl(userid);
                 }
                 catch (Exception e) { CatchException(e); }
                 //Console.WriteLine(avatar);
