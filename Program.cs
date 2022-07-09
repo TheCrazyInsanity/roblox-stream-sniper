@@ -58,7 +58,7 @@ namespace kk33.RbxStreamSniper
                 //Console.Write("Getting target user ID... ");
                 if (o.UserId != null)
                 {
-                userid = o.UserId;
+                userid = (int) o.UserId;
                 }
                 else
                 {
